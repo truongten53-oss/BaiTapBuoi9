@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Chỉ Số Cơ Thể </title>
+</head>
+<body>
+<h1> Tính Chỉ Số Cân Nặng </h1>
+<label> Nhập Cân Nặng (kg) :  </label>
+<input type="numbe" id="CanNang"/>
+<br><br>
+<label> Nhập Chiều Cao (m) :  </label>
+<input type="numbe" id="ChieuCao"/>
+<br><br>
+<button onclick="KiemTra()">Kiểm Tra</button>
+<p id="result"/>
+<p id="level"/>
+
+<script>
+function KiemTra() {
+    let CanNang = Number(document.getElementById("CanNang").value);
+    let ChieuCao = Number(document.getElementById("ChieuCao").value);
+    let BMI = CanNang / (ChieuCao * ChieuCao);
+    document.getElementById("result").innerText = "BMI = " + BMI;
+    if (BMI < 18.5) {
+        document.getElementById("level").innerText = "Underweight";
+    } else if (BMI < 25.0) {
+        document.getElementById("level").innerText = "Normal";
+    } else if (BMI < 30.0) {
+        document.getElementById("level").innerText = "Overweight";
+    } else {
+        document.getElementById("level").innerText = "Obese";
+    }
+}
+
+</script>
+</body>
+</html>
