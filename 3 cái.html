@@ -1,10 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Good - Fast - Cheap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8eef2;
+            padding: 40px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .label {
+            font-size: 32px;
+            font-weight: bold;
+            margin-left: 40px;
+        }
+        /* Switch style */
+        .switch {
+            width: 80px;
+            height: 35px;
+            background: #888;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        .ball {
+            width: 35px;
+            height: 35px;
+            background: #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.2s;
+        }
+        .active .ball {
+            left: 45px;
+            background: #4caf50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="option">
+    <div id="good" class="switch" onclick="toggle('good')"><div class="ball"></div></div>
+    <div class="label">GOOD</div>
+</div>
+
+<div class="option">
+    <div id="cheap" class="switch" onclick="toggle('cheap')"><div class="ball"></div></div>
+    <div class="label">CHEAP</div>
+</div>
+
+<div class="option">
+    <div id="fast" class="switch" onclick="toggle('fast')"><div class="ball"></div></div>
+    <div class="label">FAST</div>
+</div>
+
+<script>
+
+    function toggle(id) {
+        let good = document.getElementById("good");
+        let cheap = document.getElementById("cheap");
+        let fast = document.getElementById("fast");
+
+        // Bật hoặc tắt
+        let item = document.getElementById(id);
+        item.classList.toggle("active");
+
+        // Lấy trạng thái
+        let g = good.classList.contains("active");
+        let c = cheap.classList.contains("active");
+        let f = fast.classList.contains("active");
+
+        // Nếu cả 3 đều bật => tắt 1 cái theo ưu tiên
+        if (g && c && f) {
+            // Ưu tiên tắt cái cũ nhất (GOOD → CHEAP → FAST)
+            if (id === "good") {
+                fast.classList.remove("active");
+            } else if (id === "cheap") {
+                good.classList.remove("active");
+            } else if (id === "fast") {
+                cheap.classList.remove("active");
+            }
+        }
+    }
+
+</script>
+
+</body>
+</html>
+
+
 </body>
 </html>
